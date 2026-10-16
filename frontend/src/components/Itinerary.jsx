@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from "react";
 export default function Itinerary({ data, image, onImage, auto }) {
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
+  const [localImg, setLocalImg] = useState(null); 
 
   async function makeImage() {
     setBusy(true);
@@ -25,7 +26,7 @@ export default function Itinerary({ data, image, onImage, auto }) {
     }
     setBusy(false);
       const started = useRef(false);
-  useEffect(() => {
+      useEffect(() => {
     if (auto && !image && !started.current) {
       started.current = true;
       makeImage();
