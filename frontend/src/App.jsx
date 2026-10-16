@@ -9,7 +9,7 @@ const GREETING =
   "Hi, I'm your travel advisor. Tell me where you want to go, for how many days, what you enjoy (food, museums, hiking, beaches, nightlife, shopping) and your budget. I'll ask about anything I'm missing, then build your itinerary.";
 
 const STARTERS = [
-  "3 days in Paris for two, food and viewpoints, around 600 EUR",
+  "3 days in Paris for two, food and viewpoints, around 1000 EUR",
   "A relaxed weekend in Spain Beaches...!!",
   "5 days hiking and lakes in Switzerland, solo traveller",
 ];
@@ -37,6 +37,7 @@ function load() {
 
 export default function App() {
   const [S, setS] = useState(load);
+  const [freshIndex, setFreshIndex] = useState(-1); // newest reply, used for auto image
   const [images, setImages] = useState({}); // kept in memory only (too large for storage)
   const [draft, setDraft] = useState("");
   const [busy, setBusy] = useState(false);
@@ -86,9 +87,11 @@ export default function App() {
           hasCost: s.usage.hasCost || d.usage.cost_usd != null,
         },
       }));
+      setFreshIndex(msgs.length);
     } catch (e) {
-      setS((s) => ({ ...s, messages: before }));
+      setS((s) => ({ ...s, messages: before }));F
       setDraft(text);
+      
       setError(e.message);
     }
     setBusy(false);
@@ -98,6 +101,7 @@ export default function App() {
     setS(fresh());
     setImages({});
     setError("");
+    setFreshIndex(-1);
   }
 
   const onlyGreeting = S.messages.length === 1;
@@ -145,9 +149,10 @@ export default function App() {
                 }
               })();
               return (
-                <Message
+                  <Message
                   key={i}
                   msg={m}
+                  auto={i === freshIndex}
                   image={dest ? images[dest] : undefined}
                   onImage={(img) => setImages((p) => ({ ...p, [dest]: img }))}
                 />

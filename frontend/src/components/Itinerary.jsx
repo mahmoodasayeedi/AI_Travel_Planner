@@ -1,8 +1,8 @@
-import { useState } from "react";
 import { Clock, ImagePlus, Lightbulb, Loader2, MapPin, Wallet } from "lucide-react";
 import { api } from "../api";
+import { useEffect, useRef, useState } from "react";
 
-export default function Itinerary({ data, image, onImage }) {
+export default function Itinerary({ data, image, onImage, auto }) {
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
 
@@ -24,6 +24,13 @@ export default function Itinerary({ data, image, onImage }) {
       setError(e.message);
     }
     setBusy(false);
+      const started = useRef(false);
+  useEffect(() => {
+    if (auto && !image && !started.current) {
+      started.current = true;
+      makeImage();
+    }
+  }, []);
   }
 
   const budget = data.estimated_budget;

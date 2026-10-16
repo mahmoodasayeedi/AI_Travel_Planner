@@ -3,7 +3,7 @@ import { parseItinerary } from "../api";
 import Itinerary from "./Itinerary";
 import RichText from "./RichText";
 
-export default function Message({ msg, image, onImage }) {
+export default function Message({ msg, image, onImage, auto }) {
   if (msg.role === "user") {
     return (
       <div className="row user">
@@ -18,7 +18,7 @@ export default function Message({ msg, image, onImage }) {
         <Compass size={18} />
       </div>
       <div className={trip ? "bubble wide" : "bubble"}>
-        {trip ? <Itinerary data={trip} image={image} onImage={onImage} /> : <RichText text={msg.content} />}
+                {trip ? <Itinerary data={trip} image={image} onImage={onImage} auto={auto} /> : <RichText text={msg.content} />}
       </div>
     </div>
   );
