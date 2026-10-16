@@ -8,8 +8,8 @@ const GREETING =
   "Hi, I'm your travel advisor. Tell me where you want to go, for how many days, what you enjoy (food, museums, hiking, beaches, nightlife, shopping) and your budget. I'll ask about anything I'm missing, then build your itinerary.";
 
 const STARTERS = [
-  "3 days in Lisbon for two, food and viewpoints, around 600 EUR",
-  "A relaxed weekend in Kyoto with temples and tea",
+  "3 days in Paris for two, food and viewpoints, around 600 EUR",
+  "A relaxed weekend in Spain Beaches",
   "5 days hiking and lakes in Switzerland, solo traveller",
 ];
 
