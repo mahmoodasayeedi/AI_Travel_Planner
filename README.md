@@ -188,7 +188,9 @@ Known gaps for a public deployment:
 - Automated tests for the backend routes and the itinerary parser
 - Comparing different models for quality, speed and cost (see `model_evaluation.py`)
 
-## Author
+## 👥 Project Team
 
-Mahmooda Sayeedir.
-Vinay Pyatimani
+Built as an AI Travel Planner project with Python, FastAPI, React and the OpenAI API
+
+- **Mahmooda Sayeedir**
+- **Vinay Pyatimani**
