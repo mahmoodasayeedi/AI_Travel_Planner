@@ -3,6 +3,7 @@ import { Compass, Loader2, Menu, RotateCcw, Send } from "lucide-react";
 import { api } from "./api";
 import Message from "./components/Message";
 import Sidebar from "./components/Sidebar";
+import Tagline from "./components/Tagline";
 
 const GREETING =
   "Hi, I'm your travel advisor. Tell me where you want to go, for how many days, what you enjoy (food, museums, hiking, beaches, nightlife, shopping) and your budget. I'll ask about anything I'm missing, then build your itinerary.";
@@ -114,11 +115,11 @@ export default function App() {
           </span>
           <div>
             <h1>AI Travel Advisor</h1>
-            <p>Itineraries built around what you actually enjoy</p>
+            <Tagline />
           </div>
         </div>
-        <button className="btn-ghost" onClick={reset}>
-          <RotateCcw size={15} /> New trip
+        <button className="btn-ghost" onClick={reset} aria-label="Start a new trip">
+          <RotateCcw size={15} /> <span className="btn-label">New trip</span>
         </button>
       </header>
 

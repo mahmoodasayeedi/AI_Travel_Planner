@@ -39,8 +39,12 @@ button, input, select { font: inherit; color: inherit; }
 .only-mobile { display: none; }
 
 .app { height: 100%; display: flex; flex-direction: column; }
-.top { display: flex; align-items: center; gap: 12px; padding: 12px 24px; background: var(--teal-deep); color: #fff; }
-.brand { display: flex; align-items: center; gap: 12px; flex: 1; min-width: 0; }
+.top { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 12px; padding: 12px 24px; background: var(--teal-deep); color: #fff; }
+.top > .icon-btn { grid-column: 1; justify-self: start; }
+.top > .brand { grid-column: 2; }
+.top > .btn-ghost { grid-column: 3; justify-self: end; }
+.brand { display: flex; align-items: center; gap: 12px; min-width: 0; }
+.brand > div { width: 21rem; } /* fixed width so the rotating tagline never shifts the centred title */
 .logo { display: grid; place-items: center; width: 38px; height: 38px; border-radius: 50%; background: var(--sun); color: #10242f; flex: none; }
 .brand h1 { margin: 0; font: 800 20px/1.1 var(--display); letter-spacing: -0.01em; }
 .brand p { margin: 2px 0 0; font-size: 13px; opacity: 0.8; }
@@ -146,6 +150,9 @@ input, select { width: 100%; padding: 10px 12px; border: 1px solid var(--line); 
 /* ---------- mobile ---------- */
 @media (max-width: 860px) {
   .only-mobile { display: inline-flex; }
+  .brand > div { width: auto; }
+  .btn-label { display: none; }
+  .top .btn-ghost { padding: 8px; }
   .top { padding: 10px 14px; }
   .brand p { display: none; }
   .body { grid-template-columns: 1fr; }
@@ -161,3 +168,8 @@ input, select { width: 100%; padding: 10px 12px; border: 1px solid var(--line); 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition: none !important; }
 }
+
+/* ---------- rotating header tagline ---------- */
+.tagline { height: 1.5em; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.tagline span { display: block; animation: tagline-in 0.55s ease both; }
+@keyframes tagline-in { from { transform: translateY(100%); opacity: 0; } to { transform: none; opacity: 1; } }
