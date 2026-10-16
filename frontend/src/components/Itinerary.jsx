@@ -10,9 +10,14 @@ export default function Itinerary({ data, image, onImage }) {
     setBusy(true);
     setError("");
     try {
+        const stops = data.itinerary
+        .flatMap((d) => (d.activities || []).map((a) => a.activity))
+        .filter(Boolean)
+        .slice(0, 12)
+        .join("; ");
       const d = await api("/api/image", {
         destination: data.destination || data.title || "travel destination",
-        itinerary_summary: JSON.stringify(data.itinerary),
+        itinerary_summary: `${data.title || ""}. ${data.summary || ""} Activities: ${stops}`,
       });
       onImage({ b64: d.image_b64, mime: d.mime });
     } catch (e) {
