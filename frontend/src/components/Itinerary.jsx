@@ -6,7 +6,7 @@ export default function Itinerary({ data, image, onImage, auto }) {
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
   const [localImg, setLocalImg] = useState(null); 
-
+  console.log("Itinerary auto =", auto, "image =", !!image);
   async function makeImage() {
     setBusy(true);
     setError("");
