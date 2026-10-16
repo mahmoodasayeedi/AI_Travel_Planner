@@ -10,7 +10,7 @@ const GREETING =
 
 const STARTERS = [
   "3 days in Paris for two, food and viewpoints, around 600 EUR",
-  "A relaxed weekend in Spain Beaches",
+  "A relaxed weekend in Spain Beaches...!!",
   "5 days hiking and lakes in Switzerland, solo traveller",
 ];
 
