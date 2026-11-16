@@ -86,7 +86,7 @@ Input limits enforced by the backend: at most 100 messages per request, 2,000 ch
 | `INPUT_PRICE_PER_M`  | No       | Price in USD per 1 million input tokens. Enables the cost display.                                                       |
 | `OUTPUT_PRICE_PER_M` | No       | Price in USD per 1 million output tokens. Enables the cost display.                                                      |
 
-Copy `.env.example` to `.env` for local use. Never commit the real `.env` file.
+Set these as environment variables (see "Run locally" below). Never commit real keys.
 
 ## Deploy to Vercel
 
